@@ -6,4 +6,4 @@ SPDX-License-Identifier: CC-BY-SA-4.0
 
 # Download module
 
-The Enigma River download extension library, version r3.8.2-BETA-4.
+The Enigma River download extension library, version r3.8.2.
