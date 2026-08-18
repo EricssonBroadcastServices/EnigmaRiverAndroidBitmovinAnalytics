@@ -1,0 +1,47 @@
+// SPDX-FileCopyrightText: 2026 Red Bee Media Ltd <https://www.redbeemedia.com/\>
+//
+// SPDX-License-Identifier: MIT
+
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion 35
+    buildToolsVersion '33.0.1'
+
+    defaultConfig {
+        minSdkVersion 21
+        targetSdkVersion 35
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
+    }
+    namespace 'com.redbeemedia.enigma.bitmovinanalytics'
+}
+
+repositories {
+    maven { url "https://jitpack.io" } //Needed for EricssonBroadcastServices.ExoPlayer
+    maven { url 'https://artifacts.bitmovin.com/artifactory/public-releases' }
+}
+
+dependencies {
+    implementation 'androidx.annotation:annotation:1.0.2'
+    if(findProject(':core') != null) {
+        implementation project(":core")
+    } else {
+        implementation "com.github.EricssonBroadcastServices.EnigmaRiverAndroid:core:r3.8.2-BETA-4"
+    }
+    implementation 'com.bitmovin.player:player:3.+'
+    testImplementation 'junit:junit:4.12'
+    testImplementation 'org.json:json:20080701'
+}
